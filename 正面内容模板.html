@@ -1,0 +1,30 @@
+<div id="english" class="section">
+    <div class="word-line">
+        <span class="word-anchor" id="word-clickable" title="点击播放发音">{{单词}}</span>
+    </div>
+    
+    <div class="phonetic-line">
+        <span class="phonetic-text">{{音标}}</span>
+    </div>
+
+    <div id="audio-storage">{{发音}}</div>
+</div>
+
+<script>
+    // 点击单词 -> 播放发音
+    (function() {
+        var word = document.getElementById('word-clickable');
+        var audioDiv = document.getElementById('audio-storage');
+        if (word && audioDiv) {
+            word.onclick = function() {
+                var btn = audioDiv.querySelector('.replay-button, .playImage, [title="Replay"], a[href^="playsound:"]');
+                if (btn) {
+                    btn.click();
+                } else {
+                    var audioTag = audioDiv.querySelector('audio');
+                    if(audioTag) audioTag.play();
+                }
+            };
+        }
+    })();
+</script>

@@ -1,0 +1,65 @@
+{{FrontSide}}
+
+<hr id="answer-divider">
+
+<div id="ext_english">
+    <div id="chinese" class="extension">{{释义}}</div>
+
+    {{#英文例句}}
+    <div class="example-box">
+        <div class="content-en">{{英文例句}}</div>
+        <div class="content-cn">
+            {{#中文例句}}{{中文例句}}{{/中文例句}}
+            {{^中文例句}}(暂无翻译){{/中文例句}}
+        </div>
+    </div>
+    {{/英文例句}}
+</div>
+
+<script>
+// --- 脚本 1: 词性排版 (悬挂对齐) ---
+(function() {
+    var chDiv = document.getElementById('chinese');
+    if (chDiv) {
+        var html = chDiv.innerHTML;
+        html = html.replace(/<div>/gi, '<br>').replace(/<\/div>/gi, '');
+        var lines = html.split(/<br\s*\/?>/i);
+        var posRegex = /^\s*((?:n\.|v\.|vi\.|vt\.|adj\.|adv\.|prep\.|conj\.|pron\.|num\.|art\.|int\.)\s*)/i;
+        var newHtml = lines.map(function(line) {
+            var cleanLine = line.trim();
+            if (!cleanLine) return ''; 
+            var match = cleanLine.match(posRegex);
+            if (match) {
+                var posText = match[1]; 
+                var defText = cleanLine.substring(posText.length); 
+                return '<div class="def-row"><span class="pos-pill">' + posText.trim() + '</span><span class="def-content">' + defText + '</span></div>';
+            } else {
+                return '<div class="def-row"><span class="def-content">' + cleanLine + '</span></div>';
+            }
+        }).join('');
+        chDiv.innerHTML = newHtml;
+    }
+})();
+
+// --- 脚本 2: 例句只保留一行 ---
+(function() {
+    function keepFirstLineOnly(className) {
+        var boxes = document.getElementsByClassName(className);
+        for (var i = 0; i < boxes.length; i++) {
+            var box = boxes[i];
+            var html = box.innerHTML;
+            html = html.replace(/<div>/gi, '<br>').replace(/<\/div>/gi, '');
+            var lines = html.split(/<br\s*\/?>/i);
+            for (var j = 0; j < lines.length; j++) {
+                var cleanLine = lines[j].trim();
+                if (cleanLine.length > 0) {
+                    box.innerHTML = cleanLine;
+                    break;
+                }
+            }
+        }
+    }
+    keepFirstLineOnly('content-en');
+    keepFirstLineOnly('content-cn');
+})();
+</script>

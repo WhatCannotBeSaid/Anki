@@ -1,5 +1,6 @@
 <div class="card-container">
     <div class="source-tag">{{Source}}</div>
+    
     <div class="sentence">{{cloze:Text}}</div>
     
     <hr class="separator">
@@ -19,68 +20,58 @@
     if (!container) return;
     
     var html = container.innerHTML;
-    // 兼容各种换行符
     var lines = html.split(/<br\s*\/?>|<div>|<\/div>|\n/gi);
     var newHtml = '';
     
-    // 1. 词性正则：匹配开头是 "字母." 的组合 (v. n. adj. vt. vi. prep. conj.)
+    // 1. 词性正则
     var posRegex = /^([a-z]{1,5}\.)\s*(.*)/i;
     
-    // 2. 中英文分离正则 (更宽容)：
-    // 只要这一行里有括号，就尝试提取。
-    // group(1)=英文, group(2)=中文
+    // 2. 中英文分离正则 (只要有括号就提取)
     var splitRegex = /(.*)[\(\（](.*)[\)\）]/;
 
     lines.forEach(function(line) {
-        // 清理 HTML 空格
         var cleanLine = line.replace(/&nbsp;/g, ' ').trim();
         if (cleanLine.length === 0) return;
         
-        // --- 步骤 A: 提取词性 ---
+        // A. 提取词性
         var pos = "";
         var content = cleanLine;
         var posMatch = cleanLine.match(posRegex);
         
         if (posMatch) {
-            pos = posMatch[1]; // 例如 "adj."
-            content = posMatch[2]; // 剩下的内容
+            pos = posMatch[1]; 
+            content = posMatch[2]; 
         }
         
-        // --- 步骤 B: 提取中文 (作为悬浮内容) ---
+        // B. 提取中文
         var englishText = content;
         var chineseText = "";
-        
         var splitMatch = content.match(splitRegex);
         if (splitMatch) {
-            englishText = splitMatch[1].trim(); // 括号前的是英文
-            chineseText = splitMatch[2].trim(); // 括号里的是中文
+            englishText = splitMatch[1].trim(); 
+            chineseText = splitMatch[2].trim(); 
         }
         
-        // --- 步骤 C: 决定颜色 (覆盖更多词性) ---
-        var colorClass = 'pill-other'; // 默认为紫色(prep, conj等)
+        // C. 决定颜色
+        var colorClass = 'pill-other'; 
         if (pos) {
             var p = pos.toLowerCase();
-            if (p.startsWith('v')) colorClass = 'pill-verb';       // v. vt. vi. -> 蓝
-            else if (p.startsWith('n')) colorClass = 'pill-noun';  // n. -> 红
-            else if (p.startsWith('a')) colorClass = 'pill-adj';   // adj. adv. -> 绿
-            else if (p.startsWith('p')) colorClass = 'pill-other'; // prep. -> 紫
+            if (p.startsWith('v')) colorClass = 'pill-verb';       
+            else if (p.startsWith('n')) colorClass = 'pill-noun';  
+            else if (p.startsWith('a')) colorClass = 'pill-adj';   
+            else if (p.startsWith('p')) colorClass = 'pill-other'; 
         }
         
-        // --- 步骤 D: 组装 HTML ---
-        
-        // 1. 词性部分
+        // D. 组装
         var posHtml = '';
         if (pos) {
             posHtml = '<span class="pos-pill ' + colorClass + '">' + pos + '</span>';
         }
         
-        // 2. 释义部分 (如果有中文，就加悬浮特效)
         var textHtml = '';
         if (chineseText) {
-            // 这里特意清理一下英文末尾可能的标点
             textHtml = '<span class="def-en" data-cn="' + chineseText + '">' + englishText + '</span>';
         } else {
-            // 没有括号/中文，直接显示原文本
             textHtml = englishText;
         }
         

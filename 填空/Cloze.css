@@ -5,7 +5,8 @@
     background-color: #f9f9f9;
     color: #333;
     line-height: 1.6;
-    text-align: left; /* 强制左对齐，学术阅读更舒服 */
+    text-align: left;
+    /* 强制左对齐，学术阅读更舒服 */
 }
 
 /* 主容器：限制宽度，增加白卡片效果 */
@@ -16,7 +17,7 @@
     padding: 30px;
     border: 1px solid #e0e0e0;
     border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 }
 
 /* 1. Source 字段样式 (顶部小字) */
@@ -41,8 +42,10 @@
 /* 挖空部分的高亮样式 */
 .cloze {
     font-weight: bold;
-    color: #0056b3; /* 深蓝 */
-    background-color: #e8f0fe; /* 浅蓝底 */
+    color: #0056b3;
+    /* 深蓝 */
+    background-color: #e8f0fe;
+    /* 浅蓝底 */
     padding: 0 5px;
     border-radius: 4px;
     border-bottom: 2px solid #b3d7ff;
@@ -65,7 +68,8 @@
 /* JS生成的每一行定义的容器 */
 .def-row {
     position: relative;
-    padding-left: 3.5em; /* 给左侧的词性标签留出空间 */
+    padding-left: 3.5em;
+    /* 给左侧的词性标签留出空间 */
     margin-bottom: 12px;
 }
 
@@ -78,37 +82,50 @@
     position: absolute;
     left: 0;
     top: 3px;
-    width: 3em; 
-    text-align: center; /* 居中更好看 */
-    
+    width: 3em;
+    text-align: center;
+    /* 居中更好看 */
+
     font-family: "Segoe UI", sans-serif;
     font-weight: bold;
     font-size: 13px;
-    color: #ffffff !important; /* 强制白色文字 */
-    border-radius: 4px;        /* 圆角 */
+    color: #ffffff !important;
+    /* 强制白色文字 */
+    border-radius: 4px;
+    /* 圆角 */
     padding: 2px 0;
-    box-shadow: 1px 1px 3px rgba(0,0,0,0.2); /* 加一点阴影更立体 */
-    text-shadow: 0 1px 1px rgba(0,0,0,0.1);
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+    /* 加一点阴影更立体 */
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
 }
 
 /* 2. 定义不同词性的专属颜色 */
 
 /* 动词 (v.) - 亮蓝色 */
-.pill-verb { background-color: #007bff; }
+.pill-verb {
+    background-color: #007bff;
+}
 
 /* 名词 (n.) - 砖红色 */
-.pill-noun { background-color: #dc3545; }
+.pill-noun {
+    background-color: #dc3545;
+}
 
 /* 形容词/副词 (adj/adv) - 翠绿色 */
-.pill-adj { background-color: #28a745; }
+.pill-adj {
+    background-color: #28a745;
+}
 
 /* 其他 (prep/conj 等) - 亮紫色 */
-.pill-other { background-color: #6f42c1; }
+.pill-other {
+    background-color: #6f42c1;
+}
 
 /* 定义行的缩进 (配合标签宽度) */
 .def-row {
     position: relative;
-    padding-left: 3.8em; /* 稍微多留点空间给胶囊 */
+    padding-left: 3.8em;
+    /* 稍微多留点空间给胶囊 */
     margin-bottom: 12px;
 }
 
@@ -116,7 +133,8 @@
 .notes-box {
     margin-top: 20px;
     padding: 15px;
-    background-color: #fff9e6; /* 淡黄色便利贴风格 */
+    background-color: #fff9e6;
+    /* 淡黄色便利贴风格 */
     border-left: 4px solid #f1c40f;
     font-size: 16px;
     color: #665c38;
@@ -128,17 +146,22 @@
 /* 每一行定义的容器 */
 .def-row {
     position: relative;
-    padding-left: 3.8em; /* 给词性胶囊留空 */
+    padding-left: 3.8em;
+    /* 给词性胶囊留空 */
     margin-bottom: 12px;
-    display: flex;       /* 弹性布局，方便对齐 */
-    align-items: center; /* 垂直居中 */
+    display: flex;
+    /* 弹性布局，方便对齐 */
+    align-items: center;
+    /* 垂直居中 */
 }
 
 /* 英文释义文字 (默认显示) */
 .def-en {
     color: #333;
-    cursor: help; /* 鼠标放上去显示问号/手型 */
-    border-bottom: 1px dashed #ccc; /* 虚线提示这里有交互 */
+    cursor: help;
+    /* 鼠标放上去显示问号/手型 */
+    border-bottom: 1px dashed #ccc;
+    /* 虚线提示这里有交互 */
     position: relative;
     transition: all 0.2s;
 }
@@ -146,32 +169,40 @@
 .def-en:hover {
     color: #000;
     border-bottom-color: #666;
-    background-color: #f0f0f0; /* 悬浮时轻微高亮背景 */
+    background-color: #f0f0f0;
+    /* 悬浮时轻微高亮背景 */
     border-radius: 4px;
     padding: 0 4px;
-    margin: 0 -4px; /* 抵消padding，保持位置不动 */
+    margin: 0 -4px;
+    /* 抵消padding，保持位置不动 */
 }
 
 /* --- 核心交互：悬浮显示的中文气泡 --- */
 .def-en:hover::after {
-    content: attr(data-cn); /* 读取中文内容 */
-    
+    content: attr(data-cn);
+    /* 读取中文内容 */
+
     position: absolute;
-    bottom: 130%; /* 显示在上方 */
+    bottom: 130%;
+    /* 显示在上方 */
     left: 50%;
-    transform: translateX(-50%); /* 居中对齐 */
-    
-    background-color: #2c3e50; /*以此深色背景为底 */
+    transform: translateX(-50%);
+    /* 居中对齐 */
+
+    background-color: #2c3e50;
+    /*以此深色背景为底 */
     color: #fff;
     font-size: 16px;
     font-weight: bold;
-    white-space: nowrap; /* 不换行 */
+    white-space: nowrap;
+    /* 不换行 */
     padding: 8px 12px;
     border-radius: 6px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     z-index: 100;
-    pointer-events: none; /* 防止气泡挡住鼠标 */
-    
+    pointer-events: none;
+    /* 防止气泡挡住鼠标 */
+
     /* 动画效果 */
     opacity: 0;
     animation: fadeIn 0.2s forwards;
@@ -181,17 +212,21 @@
 .def-en:hover::before {
     content: "";
     position: absolute;
-    bottom: 110%; /* 紧贴气泡下方 */
+    bottom: 110%;
+    /* 紧贴气泡下方 */
     left: 50%;
     margin-left: -6px;
     border-width: 6px;
     border-style: solid;
     border-color: #2c3e50 transparent transparent transparent;
-    
+
     opacity: 0;
     animation: fadeIn 0.2s forwards;
 }
 
 @keyframes fadeIn {
-    to { opacity: 1; transform: translateX(-50%) translateY(5px); }
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(5px);
+    }
 }

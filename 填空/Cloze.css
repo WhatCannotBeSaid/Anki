@@ -230,3 +230,100 @@
         transform: translateX(-50%) translateY(5px);
     }
 }
+
+/* Night mode support for Anki desktop + mobile */
+.nightMode .card,
+.night_mode .card,
+.card.nightMode,
+.card.night_mode {
+    background-color: #111827;
+    color: #e5e7eb;
+}
+
+.nightMode .card-container,
+.night_mode .card-container,
+.card.nightMode .card-container,
+.card.night_mode .card-container {
+    background-color: #1f2937;
+    border-color: #374151;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+}
+
+.nightMode .source-tag,
+.night_mode .source-tag,
+.card.nightMode .source-tag,
+.card.night_mode .source-tag {
+    color: #9ca3af;
+    border-bottom-color: #374151;
+}
+
+.nightMode .sentence,
+.night_mode .sentence,
+.card.nightMode .sentence,
+.card.night_mode .sentence {
+    color: #f3f4f6;
+}
+
+.nightMode .cloze,
+.night_mode .cloze,
+.card.nightMode .cloze,
+.card.night_mode .cloze {
+    color: #bfdbfe;
+    background-color: #1e3a5f;
+    border-bottom-color: #3b82f6;
+}
+
+.nightMode .separator,
+.night_mode .separator,
+.card.nightMode .separator,
+.card.night_mode .separator {
+    border-top-color: #374151;
+}
+
+.nightMode #definition-area,
+.night_mode #definition-area,
+.card.nightMode #definition-area,
+.card.night_mode #definition-area {
+    color: #d1d5db;
+}
+
+.nightMode .def-en,
+.night_mode .def-en,
+.card.nightMode .def-en,
+.card.night_mode .def-en {
+    color: #e5e7eb;
+    border-bottom-color: #4b5563;
+}
+
+.nightMode .def-en:hover,
+.night_mode .def-en:hover,
+.card.nightMode .def-en:hover,
+.card.night_mode .def-en:hover {
+    color: #f9fafb;
+    border-bottom-color: #9ca3af;
+    background-color: #374151;
+}
+
+.nightMode .def-en:hover::after,
+.night_mode .def-en:hover::after,
+.card.nightMode .def-en:hover::after,
+.card.night_mode .def-en:hover::after {
+    background-color: #0f172a;
+    color: #f9fafb;
+}
+
+.nightMode .def-en:hover::before,
+.night_mode .def-en:hover::before,
+.card.nightMode .def-en:hover::before,
+.card.night_mode .def-en:hover::before {
+    border-color: #0f172a transparent transparent transparent;
+}
+
+.nightMode .notes-box,
+.night_mode .notes-box,
+.card.nightMode .notes-box,
+.card.night_mode .notes-box {
+    background-color: #312e17;
+    border-left-color: #f59e0b;
+    color: #fef3c7;
+}

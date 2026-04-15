@@ -1,6 +1,6 @@
 /* 全局卡片背景 */
 .card {
-    font-family: "Georgia", "Cambria", "Times New Roman", serif;
+    font-family: "Optima", "方正屏显雅宋_GBK", "Times New Roman", "STKaiti", "Microsoft YaHei", sans-serif;
     font-size: 20px;
     background-color: #f9f9f9;
     color: #333;
@@ -22,7 +22,7 @@
 
 /* 1. Source 字段样式 (顶部小字) */
 .source-tag {
-    font-family: "Segoe UI", sans-serif;
+    font-family: "Optima", "方正屏显雅宋_GBK", "Times New Roman", "STKaiti", "Microsoft YaHei", sans-serif;
     font-size: 12px;
     color: #999;
     text-transform: uppercase;
@@ -86,7 +86,7 @@
     text-align: center;
     /* 居中更好看 */
 
-    font-family: "Segoe UI", sans-serif;
+    font-family: "Optima", "方正屏显雅宋_GBK", "Times New Roman", "STKaiti", "Microsoft YaHei", sans-serif;
     font-weight: bold;
     font-size: 13px;
     color: #ffffff !important;

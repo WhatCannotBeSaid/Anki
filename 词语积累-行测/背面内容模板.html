@@ -1,0 +1,39 @@
+{{FrontSide}}
+
+<hr id="answer-divider">
+
+<div id="ext_english">
+    <div id="chinese" class="extension">{{释义}}</div>
+
+    {{#例句}}
+    <div class="example-box">
+        <div class="example-text">{{例句}}</div>
+    </div>
+    {{/例句}}
+</div>
+
+<script>
+// 释义：词性悬挂对齐（若释义行以 n. / v. 等开头则排版为词性标签 + 内容）
+(function() {
+    var chDiv = document.getElementById('chinese');
+    if (chDiv) {
+        var html = chDiv.innerHTML;
+        html = html.replace(/<div>/gi, '<br>').replace(/<\/div>/gi, '');
+        var lines = html.split(/<br\s*\/?>/i);
+        var posRegex = /^\s*((?:n\.|v\.|vi\.|vt\.|adj\.|adv\.|prep\.|conj\.|pron\.|num\.|art\.|int\.)\s*)/i;
+        var newHtml = lines.map(function(line) {
+            var cleanLine = line.trim();
+            if (!cleanLine) return '';
+            var match = cleanLine.match(posRegex);
+            if (match) {
+                var posText = match[1];
+                var defText = cleanLine.substring(posText.length);
+                return '<div class="def-row"><span class="pos-pill">' + posText.trim() + '</span><span class="def-content">' + defText + '</span></div>';
+            } else {
+                return '<div class="def-row"><span class="def-content">' + cleanLine + '</span></div>';
+            }
+        }).join('');
+        chDiv.innerHTML = newHtml;
+    }
+})();
+</script>

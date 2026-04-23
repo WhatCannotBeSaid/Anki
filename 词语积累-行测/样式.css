@@ -1,0 +1,172 @@
+/* =======================================
+   【ROOT 设置区】字体与配色变量
+   ======================================= */
+:root {
+    /* --- 字体设置 --- */
+    --font-word: "Calligraph421 BT", "方正颜真卿楷书 简", serif;
+    --font-phonetic: "Times New Roman", "方正柳公权楷书 简", serif;
+    --font-def:  "方正清刻本悦宋简体", "宋体", serif;
+    --font-en-sentence: "Optima", "Times New Roman", sans-serif;
+    --font-cn-sentence: "方正屏显雅宋_GBK", "STKaiti", "Microsoft YaHei", serif;
+
+    /* --- 日间模式 --- */
+    --bg-card: #ffffff;
+    --text-main: #333333;
+    --text-sub: #444444;       /* 稍微加深一点，字体大了颜色深一点更好看 */
+    --text-light: #95a5a6;
+    --accent-color: #2c3e50;    
+    --pos-color: #0077cc;       
+    --divider-color: #e0e0e0;
+    
+    /* 例句盒子 (白色背景) */
+    --box-bg: #ffffff;
+    --box-border: #e0e0e0;
+    --box-shadow-hover: rgba(52, 152, 219, 0.15);
+    --box-hover-border: #3498db;
+    --box-text-en: #2c3e50;
+    --box-text-cn: #34495e;
+}
+
+/* --- 夜间模式 --- */
+.nightMode {
+    --bg-card: #2f2f31;
+    --text-main: #e0e0e0;
+    --text-sub: #dddddd;
+    --text-light: #888888;
+    --accent-color: #ecf0f1;
+    --pos-color: #5dade2;
+    --divider-color: #444444;
+
+    --box-bg: #2f2f31;
+    --box-border: #505050;
+    --box-shadow-hover: rgba(0, 0, 0, 0.3);
+    --box-hover-border: #5dade2;
+    --box-text-en: #dcdcdc;
+    --box-text-cn: #aaaaaa;
+}
+
+/* =======================================
+   全局基础设置
+   ======================================= */
+.card {
+    font-family: "Helvetica Neue", "Arial", sans-serif;
+    font-size: 20px;
+    text-align: center;
+    color: var(--text-main);
+    background-color: var(--bg-card);
+    padding: 30px 0; /* 稍微增加上下边距 */
+}
+
+hr#answer-divider {
+    border: 0;
+    border-top: 1px dashed var(--divider-color);
+    margin: 40px auto; /* 分割线间距也拉大一点 */
+    width: 85%;
+}
+
+/* --- 正面样式 --- */
+#term-front { padding: 10px 10px; }
+
+.word-line {
+    text-align: center;
+    margin-bottom: 15px; /* 增加单词和音标的间距 */
+    position: relative;
+}
+
+/* --- 单词样式 (已加大) --- */
+.word-anchor {
+    position: relative;
+    display: inline-block;
+    font-family: var(--font-word);
+    font-size: 60px;
+    font-weight: bold;
+    color: var(--accent-color);
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* --- 音标行样式 (已加大) --- */
+.phonetic-line {
+    font-family: var(--font-phonetic);
+    
+    /* 【核心修改】音标加大 */
+    font-size: 22px;   
+    
+    color: var(--text-light);
+    margin-top: 5px;
+}
+
+/* --- 背面样式 --- */
+
+/* 释义容器 (已加大) */
+#chinese {
+    display: inline-block;
+    text-align: left;
+    font-family: var(--font-def);
+    
+    /* 【核心修改】中文释义加大 */
+    font-size: 24px;   
+    
+    line-height: 1.6;
+    color: var(--text-sub);
+    margin-bottom: 25px;
+    position: relative;
+    max-width: 90%; /* 字体大了，宽度稍微放宽一点 */
+}
+
+.def-row { position: relative; margin-bottom: 8px; }
+
+/* 词性样式 (已加大) */
+.pos-pill {
+    position: absolute;
+    right: 100%;
+    top: 0;
+    margin-right: 15px; /* 间距稍微加大 */
+    white-space: nowrap;
+    text-align: right;
+    color: var(--pos-color);
+    font-weight: bold;
+    font-family: "Times New Roman", serif;
+    font-style: italic;
+    
+    /* 词性大小 (相对于父元素24px的0.9倍 ≈ 21.6px) */
+    font-size: 0.9em;  
+}
+
+.def-content { display: block; }
+
+#ext_english {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+/* --- 例句盒子：整段例句始终可见 --- */
+.example-box {
+    width: auto;
+    min-width: 60%;
+    max-width: 95%;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    text-align: left;
+    background-color: var(--box-bg);
+    border: 1px solid var(--box-border);
+    border-radius: 12px;
+    padding: 25px 30px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.example-box:hover {
+    border-color: var(--box-hover-border);
+    box-shadow: 0 8px 16px var(--box-shadow-hover);
+}
+
+.example-text {
+    font-family: var(--font-cn-sentence);
+    font-size: 20px;
+    color: var(--box-text-cn);
+    display: block;
+    line-height: 1.7;
+    padding: 0 6px;
+}
